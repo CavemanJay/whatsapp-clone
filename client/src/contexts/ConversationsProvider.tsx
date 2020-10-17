@@ -25,7 +25,7 @@ export const ConversationsProvider: React.FC<React.PropsWithChildren<{
 }>> = ({ children, id }) => {
   const [conversations, setConversations] = useLocalStorage<Conversation[]>(
     "conversations",
-    []
+    [{ messages: [], recipients: ["all"], selected: true }]
   );
 
   const [selectedConversationIndex, setSelectedConversationIndex] = useState(0);
