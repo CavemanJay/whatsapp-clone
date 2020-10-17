@@ -8,7 +8,7 @@ import NewConversationModal from "./NewConversationModal";
 const CONVERSATIONS_KEY = "conversations";
 const CONTACTS_KEY = "contacts";
 
-export default function Sidebar({ id }) {
+const Sidebar: React.FC<{ id: string }> = ({ id }) => {
   const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
   const [modalOpen, setModalOpen] = useState(false);
   const conversationsOpen = activeKey === CONVERSATIONS_KEY;
@@ -19,7 +19,10 @@ export default function Sidebar({ id }) {
 
   return (
     <div style={{ width: "250px" }} className="d-flex flex-column">
-      <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
+      <Tab.Container
+        activeKey={activeKey}
+        onSelect={(e) => setActiveKey(e ?? "")}
+      >
         <Nav variant="tabs" className="justify-content-center">
           <Nav.Item>
             <Nav.Link eventKey={CONVERSATIONS_KEY}>Conversations</Nav.Link>
@@ -53,4 +56,6 @@ export default function Sidebar({ id }) {
       </Modal>
     </div>
   );
-}
+};
+
+export default Sidebar;

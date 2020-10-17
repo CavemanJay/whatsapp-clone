@@ -1,6 +1,10 @@
 import React, { useCallback, useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { useConversations } from "../contexts/ConversationsProvider";
+import {
+  ConversationContext,
+  useConversations,
+} from "../contexts/ConversationsProvider";
+import { Contact } from "../models";
 
 export default function OpenConversation() {
   const [text, setText] = useState("");
@@ -8,13 +12,16 @@ export default function OpenConversation() {
     if (node) node.scrollIntoView({ smooth: true });
   }, []);
 
-  const { sendMessage, selectedConversation } = useConversations();
+  const {
+    sendMessage,
+    selectedConversation,
+  } = useConversations() as ConversationContext;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
     sendMessage(
-      selectedConversation.recipients.map((r) => r.id),
+      selectedConversation.recipients.map((r: Contact) => r.id),
       text
     );
     setText("");

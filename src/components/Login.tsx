@@ -2,13 +2,13 @@ import React, { useRef } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import { v4 as uuid } from "uuid";
 
-export default function Login({ onIdSubmit }) {
-  const idRef = useRef();
+const Login: React.FC<{ onIdSubmit(id: string): void }> = ({ onIdSubmit }) => {
+  const idRef = useRef<HTMLInputElement | null>(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
 
-    onIdSubmit(idRef.current.value);
+    onIdSubmit(idRef?.current?.value as string);
   };
   const createNewId = () => {
     onIdSubmit(uuid());
@@ -33,4 +33,6 @@ export default function Login({ onIdSubmit }) {
       </Form>
     </Container>
   );
-}
+};
+
+export default Login;

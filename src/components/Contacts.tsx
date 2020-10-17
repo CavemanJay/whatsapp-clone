@@ -1,9 +1,9 @@
 import React from "react";
 import { ListGroup } from "react-bootstrap";
-import { useContacts } from "../contexts/ContactsProvider";
+import { ContactContext, useContacts } from "../contexts/ContactsProvider";
 
 export default function Contacts() {
-  const { contacts } = useContacts();
+  const { contacts } = useContacts() as ContactContext;
 
   return (
     <ListGroup variant="flush">

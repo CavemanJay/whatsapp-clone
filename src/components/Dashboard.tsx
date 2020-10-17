@@ -1,10 +1,13 @@
 import React from "react";
 import OpenConversation from "./OpenConversation";
 import Sidebar from "./Sidebar";
-import { useConversations } from "../contexts/ConversationsProvider";
+import {
+  ConversationContext,
+  useConversations,
+} from "../contexts/ConversationsProvider";
 
-export default function Dashboard({ id }) {
-  const { selectedConversation } = useConversations();
+const Dashboard: React.FC<{ id: string }> = ({ id }) => {
+  const { selectedConversation } = useConversations() as ConversationContext;
 
   return (
     <div className="d-flex" style={{ height: "100vh" }}>
@@ -12,4 +15,6 @@ export default function Dashboard({ id }) {
       {selectedConversation && <OpenConversation />}
     </div>
   );
-}
+};
+
+export default Dashboard;
