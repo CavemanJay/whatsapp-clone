@@ -7,6 +7,9 @@ export interface ContactContext {
   createContact(id: string, name: string): void;
 }
 
+/**
+ * @internal
+ */
 const ContactsContext = React.createContext<ContactContext | undefined>(
   undefined
 );

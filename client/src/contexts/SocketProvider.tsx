@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import io from "socket.io-client";
 
+/**
+ * @internal
+ */
 const SocketContext = React.createContext<SocketIOClient.Socket | undefined>(
   undefined
 );

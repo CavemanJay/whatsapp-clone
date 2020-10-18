@@ -12,6 +12,9 @@ export interface ConversationContext {
   sendMessage: Function;
 }
 
+/**
+ * @internal
+ */
 const ConversationsContext = React.createContext<
   ConversationContext | undefined
 >(undefined);
@@ -129,6 +132,9 @@ export const ConversationsProvider: React.FC<React.PropsWithChildren<{
   );
 };
 
+/**
+ * @internal
+ */
 function arrayEquality(a: any[], b: any[]) {
   if (a.length !== b.length) return false;
 

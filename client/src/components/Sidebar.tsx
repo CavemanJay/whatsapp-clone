@@ -5,7 +5,13 @@ import Contacts from "./Contacts";
 import NewContactModal from "./NewContactModal";
 import NewConversationModal from "./NewConversationModal";
 
+/**
+ * @internal
+ */
 const CONVERSATIONS_KEY = "conversations";
+/**
+ * @internal
+ */
 const CONTACTS_KEY = "contacts";
 
 const Sidebar: React.FC<{ id: string }> = ({ id }) => {
